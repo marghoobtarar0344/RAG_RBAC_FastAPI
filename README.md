@@ -1,5 +1,8 @@
 # 🚀 RAG-Based Document Query API with FastAPI & OpenAI GPT
 
+## [Code Full Documention Link](https://docs.google.com/document/d/1Wua3WlmulVLpITjFE5VkH8SJIKQovP-wDa9WulH_v4Q/edit?usp=sharing)
+
+
 ## 📌 Overview
 This FastAPI-based microservice implements a **Retrieval-Augmented Generation (RAG)** pipeline to fetch relevant document chunks from a **vector database** and optionally summarize them using OpenAI's **GPT model**.
 
