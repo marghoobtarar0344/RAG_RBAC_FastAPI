@@ -30,21 +30,18 @@ git clone https://github.com/marghoobtarar0344/RAG_RBAC_FastAPI.git
 cd RAG_RBAC_FastAPI
 ```
 
-### 2️ Install Dependencies
-```sh
-pip install -r requirements.txt
-```
+
 
 ### 3️ Set Up Environment Variables
 Create a `.env` file with the following variables:
 ```env
-DATABASE_URL = "sqlite+aiosqlite:///./test.db"
+DATABASE_URL = "postgresql+asyncpg://postgres:mysecretpassword@postgres:5432/auth_db"
 OPENAI_API_KEY= ""
 ```
 
 ### 4️ Run the Application
 ```sh
-uvicorn main:app --reload
+docker compose up --build
 ```
 
 ### 5️ Access API Docs 
@@ -79,10 +76,6 @@ POST /query
 
 ---
 
-###  Using Docker
-```sh
-docker build -t rag-fastapi .
-docker run -p 8000:8000 rag-fastapi
-```
+
 
 

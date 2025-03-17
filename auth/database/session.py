@@ -4,6 +4,8 @@ from typing import AsyncGenerator
 from .models import Base
 from config.global_variables import DATABASE_URL
 
+import os
+# print('db url',DATABASE_URL,os.listdir('/'))
 
 # DATABASE_URL = "sqlite+aiosqlite:///./test.db"  # Use aiosqlite for async SQLite
 engine = create_async_engine(DATABASE_URL, echo=True)

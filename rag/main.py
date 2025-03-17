@@ -2,9 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.openapi.utils import get_openapi
 
-from routes.auth_router import auth_router
 from routes.rag_router import rag_router
-from routes.profile_router import profile_router
 from database.session import init_db
 from config.global_variables import (
     CROS_ORIGIN,
@@ -53,8 +51,6 @@ async def startup_event():
     await init_db()
 
 # Include Routers
-app.include_router(auth_router.router, prefix="/auth", tags=["Authentication"])
-app.include_router(profile_router.router, prefix="/profile", tags=["Profiles"])
 app.include_router(rag_router.router, prefix="/rag", tags=["RAG Pipeline"])
 
 # Root Endpoint
