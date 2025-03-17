@@ -5,46 +5,45 @@ This FastAPI-based microservice implements a **Retrieval-Augmented Generation (R
 
 ## ✨ Features
   **Retrieve Top-1 Relevant Chunks** from a vector database
-  **ChatGPT Summarization** for concise insights
+  **ChatGPT/Hugging-face Summarization** for concise insights
   **JWT Authentication & Authorization** with role-based access control
   **FastAPI's OpenAPI Documentation** for seamless API testing
   **Asynchronous Processing** for better performance
   **Exception Handling** for robust error management
 
-## 🏗️ Tech Stack
+##  Tech Stack
 - **FastAPI** - API framework for building high-performance web services
 - **LangChain** - Vector database similarity search
-- **OpenAI GPT-4** - Summarization of retrieved content
+- **OpenAI GPT-4/ Huggingf Face** - Summarization of retrieved content
 - **SQLAlchemy** - Database ORM for handling user authentication & permissions
-- **AsyncSession** - Asynchronous database interactions
 
 ---
 
-## ⚡ Quick Start
+##  Quick Start
 
-### 1️⃣ Clone the Repository
+### 1️ Clone the Repository
 ```sh
 git clone https://github.com/your-username/rag-fastapi.git
 cd rag-fastapi
 ```
 
-### 2️⃣ Install Dependencies
+### 2️ Install Dependencies
 ```sh
 pip install -r requirements.txt
 ```
 
-### 3️⃣ Set Up Environment Variables
+### 3️ Set Up Environment Variables
 Create a `.env` file with the following variables:
 ```env
 OPENAI_API_KEY=your-openai-key
 ```
 
-### 4️⃣ Run the Application
+### 4️ Run the Application
 ```sh
 uvicorn main:app --reload
 ```
 
-### 5️⃣ Access API Docs 🚀
+### 5️ Access API Docs 
 Visit:
 - Swagger UI: [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
 - Redoc: [http://127.0.0.1:8000/redoc](http://127.0.0.1:8000/redoc)
@@ -76,14 +75,10 @@ POST /query
 
 ---
 
-## 🛠️ Deployment
-### 🔹 Using Docker
+###  Using Docker
 ```sh
 docker build -t rag-fastapi .
 docker run -p 8000:8000 rag-fastapi
 ```
 
-## 🎯 Contact
-📩 Email: marghoobtarar0344@gmail.com  
-🌐 GitHub: [marghoobtarar0344](https://github.com/your-username)  
 
