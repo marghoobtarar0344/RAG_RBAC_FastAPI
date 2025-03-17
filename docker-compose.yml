@@ -1,12 +1,40 @@
-version: "3.8"
+version: '3.8'
 
 services:
-  fastapi-app:
-    build: .
-    container_name: rag-rbac-container
+  auth_service:
+    build: ./auth
+    ports:
+      - "8001:8001"
+    env_file:
+      - .env
+
+
+  profile_service:
+    build: ./profile
+    ports:
+      - "8002:8002"
+    env_file:
+      - .env
+
+  rag_service:
+    build: ./rag
+    ports:
+      - "8003:8003"
+    environment:
+      - VECTOR_DB_PATH=/data/chroma_db
+    env_file:
+      - .env
+
+
+  nginx:
+    image: nginx:latest
     ports:
       - "8000:8000"
-    environment:
-      - OPENAI_API_KEY=${OPENAI_API_KEY}  # Load API key from .env
     volumes:
-      - .:/app
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - auth_service
+      - profile_service
+      - rag_service
+
+

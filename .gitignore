@@ -6,7 +6,7 @@ __pycache__/
 # Virtual Environment
 venv/
 env/
-*.env
+# *.env
 *.venv
 Pipfile
 Pipfile.lock
@@ -25,9 +25,9 @@ logs/
 *.sqlite
 
 # Environment variables and secrets
-.env
-.env.local
-.env.*.local
+# .env
+# .env.local
+# .env.*.local
 *.secrets
 config/settings.yaml
 
