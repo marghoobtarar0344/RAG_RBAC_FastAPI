@@ -4,12 +4,12 @@
 This FastAPI-based microservice implements a **Retrieval-Augmented Generation (RAG)** pipeline to fetch relevant document chunks from a **vector database** and optionally summarize them using OpenAI's **GPT model**.
 
 ## ✨ Features
-  **Retrieve Top-1 Relevant Chunks** from a vector database
-  **ChatGPT/Hugging-face Summarization** for concise insights
-  **JWT Authentication & Authorization** with role-based access control
-  **FastAPI's OpenAPI Documentation** for seamless API testing
-  **Asynchronous Processing** for better performance
-  **Exception Handling** for robust error management
+-   **Retrieve Top-1 Relevant Chunks** from a vector database
+-   **ChatGPT/Hugging-face Summarization** for concise insights
+-   **JWT Authentication & Authorization** with role-based access control
+-   **FastAPI's OpenAPI Documentation** for seamless API testing
+-   **Asynchronous Processing** for better performance
+-   **Exception Handling** for robust error management
 
 ##  Tech Stack
 - **FastAPI** - API framework for building high-performance web services
