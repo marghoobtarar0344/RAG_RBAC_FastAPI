@@ -1,8 +1,7 @@
-
 from fastapi import Depends, HTTPException, APIRouter
 from sqlalchemy.ext.asyncio import AsyncSession
-from langchain.embeddings import HuggingFaceEmbeddings
-from langchain.vectorstores import Chroma
+from langchain_community.embeddings import HuggingFaceEmbeddings
+from langchain_community.vectorstores import Chroma
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.docstore.document import Document
 import os
@@ -14,7 +13,10 @@ from middleware.current_user import get_current_user
 from database.session import get_db
 from .crud import summarize_text_hugging_face, summarize_text_openAi
 from config.global_variables import (
-    VECTOR_DB_PATH
+    VECTOR_DB_PATH,
+    HUGGING_FACE_MODEL,
+    RECURSIVE_SPLITTER_CHUNK_OVERLAP,
+    RECURSIVE_SPLITTER_CHUNK_SIZE
 )
 
 router = APIRouter()
@@ -43,11 +45,16 @@ print(results)
 
 '''
 embedding_model = HuggingFaceEmbeddings(
-    model_name="sentence-transformers/all-MiniLM-L12-v2")
-vector_db = Chroma(persist_directory=VECTOR_DB_PATH,
-                   embedding_function=embedding_model)
+    model_name=HUGGING_FACE_MODEL
+)
+vector_db = Chroma(
+    persist_directory=VECTOR_DB_PATH,
+    embedding_function=embedding_model
+)
 text_splitter = RecursiveCharacterTextSplitter(
-    chunk_size=500, chunk_overlap=100)
+    chunk_size=RECURSIVE_SPLITTER_CHUNK_SIZE,
+    chunk_overlap=RECURSIVE_SPLITTER_CHUNK_OVERLAP
+)
 
 # RAG Endpoints with Role-Based Access (async)
 
@@ -98,8 +105,7 @@ async def query_documents(request: QueryRequest, user: TokenData = Depends(get_c
         raise HTTPException(
             status_code=404, detail="No relevant documents found")
 
-    text = await summarize_text_hugging_face( results[0][0].page_content)
-    
+    text = await summarize_text_hugging_face(results[0][0].page_content)
 
     return {"results": text}
 
@@ -124,9 +130,7 @@ async def query_documents(request: QueryRequest, user: TokenData = Depends(get_c
 
     # Format results
     print(results[0][0].page_content)
-    text = await summarize_text_openAi( results[0][0].page_content)
-
-    
+    text = await summarize_text_openAi(results[0][0].page_content)
 
     return {"results": text}
 
