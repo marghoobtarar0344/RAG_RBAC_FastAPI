@@ -23,8 +23,8 @@ This FastAPI-based microservice implements a **Retrieval-Augmented Generation (R
 
 ### 1️ Clone the Repository
 ```sh
-git clone https://github.com/your-username/rag-fastapi.git
-cd rag-fastapi
+git clone https://github.com/marghoobtarar0344/RAG_RBAC_FastAPI.git
+cd RAG_RBAC_FastAPI
 ```
 
 ### 2️ Install Dependencies
@@ -35,7 +35,8 @@ pip install -r requirements.txt
 ### 3️ Set Up Environment Variables
 Create a `.env` file with the following variables:
 ```env
-OPENAI_API_KEY=your-openai-key
+DATABASE_URL = "sqlite+aiosqlite:///./test.db"
+OPENAI_API_KEY= ""
 ```
 
 ### 4️ Run the Application
